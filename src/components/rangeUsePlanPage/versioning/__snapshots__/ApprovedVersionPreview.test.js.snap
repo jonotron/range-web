@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should display version, date, and author 1`] = `
+<div>
+  <div>
+    v2
+  </div>
+  <div>
+    June 30, 2019
+  </div>
+  <div>
+    Jane Doe
+  </div>
+</div>
+`;
