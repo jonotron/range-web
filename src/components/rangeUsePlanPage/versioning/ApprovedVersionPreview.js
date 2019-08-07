@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 24px 96px 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 `
 
 export default function ApprovedVersionPreview({ plan }) {
