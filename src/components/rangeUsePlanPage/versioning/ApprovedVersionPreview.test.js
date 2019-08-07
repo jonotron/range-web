@@ -1,9 +1,7 @@
 import React from 'react'
-import { cleanup, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import ApprovedVersionPreview from './ApprovedVersionPreview'
-
-afterEach(cleanup)
 
 it('should display version, date, and author', () => {
   const props = {
