@@ -1,13 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import styled from 'styled-components'
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 24px 96px 1fr;
+`
+
 export default function ApprovedVersionPreview({ plan }) {
   return (
-    <div>
+    <Grid>
       <div>{plan.version}</div>
       <div>{plan.date}</div>
       <div>{plan.author}</div>
-    </div>
+    </Grid>
   )
 }
 

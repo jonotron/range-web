@@ -34,15 +34,7 @@ const useVersionsForRUP = rupId => {
 const UnstyledUl = styled.ul`
   list-style-type: none;
   margin: 0;
-  padding: 100;
-
-  li {
-    border: 1px solid red;
-  }
-
-  li.selected {
-    border: 1px solid blue;
-  }
+  padding: 0;
 `
 
 export default function VersionHistory({ onClickVersion }) {
@@ -52,10 +44,7 @@ export default function VersionHistory({ onClickVersion }) {
   return (
     <UnstyledUl>
       {plan.versions.map(plan => (
-        <li
-          className="selected"
-          key={plan.version}
-          onClick={() => onClickVersion(plan.version)}>
+        <li key={plan.version} onClick={() => onClickVersion(plan.version)}>
           <ApprovedVersionPreview plan={plan} />
         </li>
       ))}
