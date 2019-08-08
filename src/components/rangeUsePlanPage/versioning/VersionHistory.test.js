@@ -6,6 +6,11 @@ import MockAdapter from 'axios-mock-adapter'
 import { CurrentRUPContext } from './useCurrentRUP'
 import VersionHistory from './VersionHistory'
 
+// We should try keep our tests as close to an integration tests as possible.
+// So we try to not mock internals and rather just mock the data that is
+// provided to our components.
+// Here we mock the response that VersionHistory would get when it's request
+// asks for some versions
 const mock = new MockAdapter(axios)
 beforeEach(() => {
   mock.onGet('http://www.mocky.io/v2/5d38a5a99f00009b519b406f').reply(200, [
@@ -27,11 +32,13 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+  // we also need to remember to reset the mock so other requests to this
+  // endpoint in other tests are not mocked
   mock.reset()
 })
 
 it('should display a list of plans', async () => {
-  const { container, getByText } = render(
+  const { getByText } = render(
     <CurrentRUPContext.Provider value={'rup-1'}>
       <VersionHistory />
     </CurrentRUPContext.Provider>
@@ -39,8 +46,8 @@ it('should display a list of plans', async () => {
 
   const john = await waitForElement(() => getByText('Mock John Doe'))
   const jane = await waitForElement(() => getByText('Mock Jane Doe'))
-  expect(container).toContainElement(john)
-  expect(container).toContainElement(jane)
+  expect(john).toBeInTheDocument()
+  expect(jane).toBeInTheDocument()
 })
 
 it('should fire onClick when a version is clicked', async () => {

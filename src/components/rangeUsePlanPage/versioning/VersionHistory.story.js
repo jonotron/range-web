@@ -27,12 +27,12 @@ mock.onGet('http://www.mocky.io/v2/5d38a5a99f00009b519b406f').reply(200, [
   }
 ])
 
-storiesOf('VersionHistory', module)
-  .addDecorator(story => (
-    <CurrentRUPContext.Provider value="rup-1">
-      {story()}
-    </CurrentRUPContext.Provider>
-  ))
-  .add('Default', () => {
-    return <VersionHistory onClickVersion={action('clicked version')} />
-  })
+const stories = storiesOf('VersionHistory', module)
+stories.addDecorator(story => (
+  <CurrentRUPContext.Provider value="rup-1">
+    {story()}
+  </CurrentRUPContext.Provider>
+))
+stories.add('Default', () => {
+  return <VersionHistory onClickVersion={action('clicked version')} />
+})
