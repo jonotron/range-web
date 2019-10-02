@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
@@ -27,12 +26,22 @@ mock.onGet('http://www.mocky.io/v2/5d38a5a99f00009b519b406f').reply(200, [
   }
 ])
 
-const stories = storiesOf('VersionHistory', module)
-stories.addDecorator(story => (
-  <CurrentRUPContext.Provider value="rup-1">
-    {story()}
-  </CurrentRUPContext.Provider>
-))
-stories.add('Default', () => {
+export default {
+  title: 'VersionHistory',
+
+  decorators: [
+    story => (
+      <CurrentRUPContext.Provider value="rup-1">
+        {story()}
+      </CurrentRUPContext.Provider>
+    )
+  ]
+}
+
+export const defaultStory = () => {
   return <VersionHistory onClickVersion={action('clicked version')} />
-})
+}
+
+defaultStory.story = {
+  name: 'Default'
+}
