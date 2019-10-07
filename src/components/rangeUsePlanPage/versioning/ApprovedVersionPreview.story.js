@@ -11,7 +11,3 @@ export const defaultStory = () => (
     plan={{ version: 'v2', date: 'June 30, 2019', author: 'Jane Doe' }}
   />
 )
-
-defaultStory.story = {
-  name: 'Default'
-}

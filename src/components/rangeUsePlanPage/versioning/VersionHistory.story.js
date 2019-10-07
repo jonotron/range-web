@@ -41,7 +41,3 @@ export default {
 export const defaultStory = () => {
   return <VersionHistory onClickVersion={action('clicked version')} />
 }
-
-defaultStory.story = {
-  name: 'Default'
-}
