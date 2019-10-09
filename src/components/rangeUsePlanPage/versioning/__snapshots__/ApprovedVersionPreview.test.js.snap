@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should display version, date, and author 1`] = `
-<div>
+.c0 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+<div
+  class="c0"
+>
   <div>
     v2
   </div>
