@@ -38,6 +38,6 @@ export default {
   ]
 }
 
-export const defaultStory = () => {
-  return <VersionHistory onClickVersion={action('clicked version')} />
+export const DefaultStory = ({onClickVersion = action('clicked version')}) => {
+  return <VersionHistory onClickVersion={onClickVersion} />
 }

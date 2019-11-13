@@ -4,7 +4,7 @@ import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
 import { CurrentRUPContext } from './useCurrentRUP'
-import VersionHistory from './VersionHistory'
+import stories, { DefaultStory } from './VersionHistory.story'
 
 // We should try keep our tests as close to an integration tests as possible.
 // So we try to not mock internals and rather just mock the data that is
@@ -38,11 +38,7 @@ afterEach(() => {
 })
 
 it('should display a list of plans', async () => {
-  const { getByText } = render(
-    <CurrentRUPContext.Provider value={'rup-1'}>
-      <VersionHistory />
-    </CurrentRUPContext.Provider>
-  )
+  const { getByText } = render( defaultStory())
 
   const john = await waitForElement(() => getByText('Mock John Doe'))
   const jane = await waitForElement(() => getByText('Mock Jane Doe'))
@@ -53,10 +49,8 @@ it('should display a list of plans', async () => {
 it('should fire onClick when a version is clicked', async () => {
   const onClickVersion = jest.fn()
   const { getByText } = render(
-    <CurrentRUPContext.Provider value={'rup-1'}>
-      <VersionHistory onClickVersion={onClickVersion} />
-    </CurrentRUPContext.Provider>
-  )
+    <DefaultStory onClickVersion={onClickVersion} />)
+
 
   const john = await waitForElement(() => getByText('Mock John Doe'))
   fireEvent.click(john)
